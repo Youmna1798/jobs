@@ -1,0 +1,475 @@
+{% extends 'myapp/base.html' %}
+{% load static %} 
+
+{% block main_block %}
+<style>
+   body, html {
+  margin: 0;
+  
+}
+  body {
+    margin: 0px !important;
+    padding: 0px;
+    box-sizing: border-box;
+    overflow-y: auto; /* Enable vertical scrolling for the entire page */
+
+  }
+  {% comment %} .about {
+    background: url('{% static 'blog-recent-2.jpg' %}') no-repeat center center fixed;
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 80px 0;
+    overflow-y: auto; /* Enable vertical scrolling */
+
+}
+
+
+.about:before {
+    content: "";
+    background: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 80px 0;
+
+}
+
+  .about .about-img {
+    position: relative;
+    transition: 0.5s;
+   width: 500px;
+   height:500px;
+    overflow: hidden; /* Hide any overflow outside the fixed dimensions */
+    margin: auto;
+    margin-top: 200px;
+}
+
+.about .about-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Maintain aspect ratio; cover entire container */
+    border: 4px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+}
+  
+    .about .about-img::before {
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      width: 60px;
+      height: 60px;
+      z-index: 1;
+      content: "";
+      border-left: 5px solid #cda45e;
+      border-top: 5px solid #cda45e;
+      transition: 0.5s;
+    }
+    
+    .about .about-img::after {
+      position: absolute;
+      right: 20px;
+      bottom: 20px;
+      width: 60px;
+      height: 60px;
+      z-index: 2;
+      content: "";
+      border-right: 5px solid #cda45e;
+      border-bottom: 5px solid #cda45e;
+      transition: 0.5s;
+    }
+    
+    .about .about-img:hover {
+      transform: scale(1.03);
+    }
+    
+    .about .about-img:hover::before {
+      left: 10px;
+      top: 10px;
+    }
+    
+    .about .about-img:hover::after {
+      right: 10px;
+      bottom: 10px;
+    }
+    
+    .about .content {
+      position: relative;
+    }
+    
+    .about .content h3,h2 {
+      font-weight: 600;
+      font-size: 26px;
+      color: #fff;
+      text-decoration: underline
+
+    }
+    p{
+      margin-top: 70px;
+      color: #fff;
+      text-decoration: underline;
+
+    }
+    .about .content ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .about .content ul li {
+      padding-bottom: 10px;
+      color: #fff;
+      
+    }
+    
+    .about .content ul i {
+      font-size: 20px;
+      padding-right: 4px;
+    } {% endcomment %}
+    #hero {
+      width: 100%;
+      height: 75vh;
+      background: url('{% static 'blog-recent-2.jpg' %}') top center;
+      background-size: cover;
+      position: relative;
+      margin-bottom: -140px;
+      z-index: 1;
+    }
+    
+    #hero:before {
+      content: "";
+      background: rgba(60, 65, 51, 0.4);
+      position: absolute;
+      bottom: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+    
+    #hero .hero-container {
+      position: absolute;
+      bottom: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    
+    
+   
+   
+    @media (min-width: 1024px) {
+      #hero {
+        background-attachment: fixed;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      #hero {
+        height: 100vh;
+        margin-bottom: -300px !important;
+
+      }
+    
+     
+    
+      #hero .hero-container {
+        padding: 0 15px;
+      }
+    }
+    
+    @media (max-height: 500px) {
+      #hero {
+        height: 120vh;
+        margin-bottom: -300px !important;
+
+      }
+    }
+    
+    .about {
+      position: relative;
+      z-index: 2; /* Set a higher z-index than #hero to appear on top */
+    }
+    
+    .about .container {
+      box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px !important;
+      padding-bottom: 15px;
+      background: #fff;
+      position: relative;
+      z-index: 2; /* Make sure container is on top of #hero */
+    }
+  
+    .about .count-box {
+      width: 100%;
+    }
+    
+    .about .count-box i {
+      display: block;
+      font-size: 38px;
+      color: #94c045;
+      float: right;
+      line-height: 0;
+    }
+    
+    .about .count-box span {
+      font-size: 28px;
+      line-height: 24px;
+      display: block;
+      font-weight: 700;
+      color: #646c55;
+      margin-left: 60px;
+    }
+    
+    .about .count-box p {
+      padding: 5px 0 0 0;
+      margin: 0 0 0 60px;
+      font-family: "Raleway", sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      color: #646c55;
+    }
+    
+    .about .count-box a {
+      font-weight: 600;
+      display: block;
+      margin-top: 20px;
+      color: #646c55;
+      font-size: 15px;
+      font-family: "Poppins", sans-serif;
+      transition: ease-in-out 0.3s;
+    }
+    
+    .about .count-box a:hover {
+      color: #8b9578;
+    }
+    
+    .about .content {
+      font-size: 15px;
+    }
+    
+    .about .content h3 {
+      font-weight: 700;
+      font-size: 24px;
+      color: #3c4133;
+    }
+
+
+
+    body h3 {
+      font-size: calc(0.7rem + 0.6vw);
+      margin: 10px 28px 14px 55px;
+      direction: rtl;
+  }
+    .about .content ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .about .content ul li {
+      padding-bottom: 10px;
+      padding-left: 28px;
+      position: relative;
+    }
+    
+    .about .content ul i {
+      font-size: 24px;
+      color: #94c045;
+      position: absolute;
+      left: 0;
+      top: -2px;
+    }
+    
+    .about .content p:last-child {
+      margin-bottom: 0;
+    }
+    .about .about-img {
+      position: relative;
+      transition: 0.5s;
+     width: 500px;
+     height:500px;
+      overflow: hidden; /* Hide any overflow outside the fixed dimensions */
+      margin: auto;
+  }
+  
+  .about .about-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Maintain aspect ratio; cover entire container */
+      border: 4px solid rgba(255, 255, 255, 0.2);
+      position: relative;
+  }
+    
+      .about .about-img::before {
+        position: absolute;
+        left: 20px;
+        top: 20px;
+        width: 60px;
+        height: 60px;
+        z-index: 1;
+        content: "";
+        border-left: 5px solid #cda45e;
+        border-top: 5px solid #cda45e;
+        transition: 0.5s;
+      }
+      
+      .about .about-img::after {
+        position: absolute;
+        right: 20px;
+        bottom: 20px;
+        width: 60px;
+        height: 60px;
+        z-index: 2;
+        content: "";
+        border-right: 5px solid #cda45e;
+        border-bottom: 5px solid #cda45e;
+        transition: 0.5s;
+      }
+      
+      .about .about-img:hover {
+        transform: scale(1.03);
+      }
+      
+      .about .about-img:hover::before {
+        left: 10px;
+        top: 10px;
+      }
+      
+      .about .about-img:hover::after {
+        right: 10px;
+        bottom: 10px;
+      }
+
+
+    
+  
+   
+    @keyframes pulsate-btn {
+      0% {
+        transform: scale(0.6, 0.6);
+        opacity: 1;
+      }
+    
+      100% {
+        transform: scale(1, 1);
+        opacity: 0;
+      }
+    }
+    @media (min-width: 768px)
+    .container, .container-md, .container-sm {
+        max-width: 800px !important;
+    }
+  </style>
+ 
+  <section id="hero">
+    <div class="hero-container" data-aos="fade-up">
+     
+    </div>
+  </section><!-- End Hero -->
+
+
+
+  <section id="about" class="about">
+    <div class="container">
+
+      <div class="row justify-content-end">
+        <div class="col-lg-11">
+          <div class="row justify-content-end">
+
+            <div class="col-lg-4 col-md-5 col-6 d-md-flex align-items-md-stretch">
+              <div class="count-box py-5">
+                <i class="bi bi-clock"></i>
+
+                <h3 style="direction:ltr;">{{job.published_date}}</h3>
+              </div>
+
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+
+        <div class="col-lg-6 video-box align-self-baseline position-relative about-img">
+          {% if job.image %}
+              <img style="width: 100%; " src="{{ job.image.url }}" alt="{{ job.title }}">
+          {% endif %}
+          {% comment %}<a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox play-btn mb-4"></a>{% endcomment %}
+      </div>
+        <div class="col-lg-6 pt-3 pt-lg-0 content">
+          <h2 style="direction: rtl">{{ job.title }}</h2>
+          <ul style="direction:rtl">
+            <li><i class="bx bx-check-double"></i> {{ job.description |safe}}</li>
+            <li>للتقديم اضغط هنا <a  href="{{ job.get_apply_link }}" {{ job.apply }}  target="_blank">Apply Now</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+  </section><!-- End About Section -->
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment %} 
+  <section id="about" class="about">
+    <div class="container overlay-container" data-aos="fade-up">
+
+      <div class="row">
+        <div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in" data-aos-delay="100">
+          <div class="about-img">
+            {% if job.image %}
+            <img src="{{ job.image.url }}" alt="{{ job.title }}">
+          {% endif %}          </div>
+        </div>
+        <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
+          <h3>{{ job.title }}</h3>
+          <p>
+           تفاصيل الوظيفة
+          </p>
+          <ul>
+            <li>{{ job.description |safe}}</li>
+            <h2>تاريخ النشر</h2>
+            <li>{{job.published_date}}</li>
+            <h3>طريقة التقديم</h3>
+            <a href="{{ job.get_apply_link }}" {{ job.apply }}  target="_blank">Apply Now</a>
+
+
+              
+            </li>
+          </ul>
+         
+        </div>
+      </div>
+
+    </div>
+  </section><!-- End About Section --> {% endcomment %}
+
+
+
+
+
+
+
+ 
+ {% endblock %}

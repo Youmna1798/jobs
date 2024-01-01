@@ -1,0 +1,76 @@
+{% extends 'myapp/base.html' %}
+
+{% load render_table from django_tables2 %}
+{% load static %} 
+
+{% block main_block %}
+  <h2>لوحة التحكم</h2>
+  <style>
+    body{
+      direction: rtl;
+      text-align: right
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    tr:hover {
+      background-color: #f5f5f5;
+    }
+
+    .delete {
+      background-color: #dc3545;
+      color: #fff;
+      border: none;
+      {% comment %} padding: 5px 10px; {% endcomment %}
+      cursor: pointer;
+      text-decoration: none;
+
+    }
+  </style>
+  <!-- Display the table -->
+  <table>
+    <thead>
+      <tr>
+        <th>العنوان</th>
+        {% comment %} <th>Description</th> {% endcomment %}
+        <th>تاريخ  النشر</th>
+        <!-- Add more headers based on your model fields -->
+        <th>Actions</th> <!-- Add a header for actions column -->
+      </tr>
+    </thead>
+    <tbody>
+      {% for job in jobs %}
+        <tr>
+          <td>{{ job.title }}</td>
+          {% comment %} <td>{{ job.description }}</td> {% endcomment %}
+<td>{{job.published_date}}</td>
+          <!-- Add more columns based on your model fields -->
+          <td>
+            <a href="{% url 'page_detail' pk=job.pk %}" class="btn btn-primary">رؤية</a>
+            <a href="{% url 'edit_job' job_id=job.pk %}" class="btn btn-primary">تعديل</a>
+
+            <a href="{% url 'delete_job' pk=job.pk %}" class="btn btn-primary delete">مسح</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <!-- Link to add a new job page -->
+  <a href="{% url 'add_job' %}" class="btn btn-primary">أضافة وظيفة جديدة</a>
+
+ 
+{% endblock %}
